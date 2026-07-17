@@ -65,3 +65,9 @@ Designed with an **Apple Vision Pro / iOS 18 fluid glassmorphism theme**.
 You can download the pre-compiled installable APK directly from the repository's release section or folder:
 - **Direct Repository File**: [1torch-debug.apk](file:///d:/andstudio/1tourch/release/1torch-debug.apk)
 - **GitHub Release (Recommended)**: Go to the "Releases" tab on your GitHub repository page and download the asset associated with the latest tag.
+
+---
+
+## 📄 License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
