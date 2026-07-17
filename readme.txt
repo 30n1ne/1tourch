@@ -54,29 +54,3 @@ How to Build the App APK
      app/release/
 
 ------------------------------------------------------------------------
-How to Host and Add the APK to GitHub (Recommended)
-------------------------------------------------------------------------
-Do not upload the APK file directly into the Git repository history. Big binary files slow down cloning and blow up repository size. Instead, use GitHub Releases:
-
-1. Create a public repository on GitHub and push this project:
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin <your-github-repo-url>
-   git branch -M main
-   git push -u origin main
-
-2. Create a GitHub Release:
-   - Go to your repository page on GitHub.com.
-   - On the right sidebar, click on "Releases" (or "Create a new release").
-   - Click "Draft a new release".
-   - Create a version tag (e.g., v1.0.0).
-   - Write a title (e.g., "1 torch v1.0.0 - Initial Release").
-   - Write a description of what the version includes.
-
-3. Upload the APK file:
-   - In the release editor, locate the box labeled "Attach binaries by dropping them here or selecting them".
-   - Drag and drop your built APK file (e.g., `app-debug.apk` or your signed release APK).
-   - Click "Publish release".
-
-Now, users can download the installable APK directly from the "Releases" section of your GitHub repository.
