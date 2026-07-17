@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redesigned Launcher Foreground: A sleek minimalist visual logo combining
+     a pure white digit "1" and a glowing warm amber lightning bolt representing "1 torch". -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Stylized clean white digit '1' -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M40,36 H48 V72 H40 Z M40,36 L32,42 V48 L40,40 Z" />
+        
+    <!-- Stylized glowing warm amber lightning bolt -->
+    <path
+        android:fillColor="#FFF5A623"
+        android:pathData="M68,34 L52,52 H62 L58,74 L76,48 H64 L68,34 Z" />
+</vector>

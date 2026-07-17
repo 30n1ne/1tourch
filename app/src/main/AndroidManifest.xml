@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Required to access the camera hardware, which includes the flashlight/torch unit.
+         The CAMERA permission is needed because the torch is controlled via the Camera2 API
+         (CameraManager). Without this permission, setTorchMode() and
+         turnOnTorchWithStrengthLevel() will throw a SecurityException. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Declare that this app uses the camera flash feature.
+         android:required="true" means the app will only appear on the Play Store
+         for devices that actually have a flash unit. -->
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme._1Tourch">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme._1Tourch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
+        </activity>
+
+        <!-- Quick Settings Tile Service (panel toggle) -->
+        <service
+            android:name=".TorchTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_bolt"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- Home Screen App Widget -->
+        <receiver
+            android:name=".TorchWidgetProvider"
+            android:exported="true"
+            android:label="1 torch Widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.a_rx.a1tourch.ACTION_UPDATE_STATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+    </application>
+
+</manifest>

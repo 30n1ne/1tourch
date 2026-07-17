@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme — dark torch theme -->
+    <style name="Theme._1Tourch" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color (amber/gold) -->
+        <item name="colorPrimary">@color/amber_600</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/amber_400</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">@color/surface_dark</item>
+        <item name="colorSurface">@color/surface_card</item>
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/surface_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <!-- Window -->
+        <item name="android:windowBackground">@color/surface_dark</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App Widget Metadata: updated minWidth to 180dp (3x1 grid scale) to accommodate
+     the horizontal glass card with power and brightness controls cleanly. -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="180dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="86400000"
+    android:initialLayout="@layout/widget_torch"
+    android:resizeMode="horizontal"
+    android:widgetCategory="home_screen">
+</appwidget-provider>

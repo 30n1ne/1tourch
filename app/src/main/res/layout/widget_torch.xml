@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redesigned Widget Layout: strictly uses RemoteViews compatible elements
+     (FrameLayout, LinearLayout, ImageView, TextView) to prevent home screen inflation crashes.
+     Removed the unsupported Space view and XML alpha attributes, moving spacer to a safe TextView. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_glass_card"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="14dp">
+
+    <!-- Left side: Power Toggle Button Wrapper -->
+    <FrameLayout
+        android:id="@+id/widgetBtnToggle"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_torch_button_off"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/widgetIcon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_bolt"
+            android:contentDescription="Toggle Torch" />
+    </FrameLayout>
+
+    <!-- Safe RemoteViews-compatible Spacer (TextView with no text) -->
+    <TextView
+        android:id="@+id/widgetSpacer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <!-- Right side: Brightness Snap Controls (Minus, Status Text, Plus) -->
+    <LinearLayout
+        android:id="@+id/widgetControlsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Minus Button -->
+        <TextView
+            android:id="@+id/widgetBtnMinus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_torch_button_off"
+            android:gravity="center"
+            android:text="−"
+            android:textColor="#E6FFFFFF"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Current Level Indicator Text -->
+        <TextView
+            android:id="@+id/widgetTextLevel"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Level 1"
+            android:textColor="#E6FFFFFF"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.01" />
+
+        <!-- Plus Button -->
+        <TextView
+            android:id="@+id/widgetBtnPlus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_torch_button_off"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="#E6FFFFFF"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</LinearLayout>

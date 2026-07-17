@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">1 torch</string>
+
+    <!-- UI labels -->
+    <string name="label_flashlight">Flashlight</string>
+    <string name="label_brightness">Brightness</string>
+    <string name="label_status_on">ON</string>
+    <string name="label_status_off">OFF</string>
+    <string name="label_level">Level %1$d / %2$d</string>
+    <string name="label_no_flash">This device does not have a flash unit.</string>
+    <string name="label_multi_level_unsupported">Multi-level brightness is not supported on this device.\nUsing standard ON / OFF mode.</string>
+    <string name="label_error">An error occurred while accessing the camera flash.</string>
+    <string name="label_torch_header">Torch Brightness Controller</string>
+    <string name="label_api_info">Android 13+ Multi-Level Torch API</string>
+    <string name="content_desc_power_icon">Flashlight power indicator</string>
+</resources>

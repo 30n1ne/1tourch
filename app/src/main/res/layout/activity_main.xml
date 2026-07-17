@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redesigned UI: Apple Vision Pro & iOS 18 Premium Minimalist Glassmorphism.
+     Pure black background, a soft atmospheric navy/indigo radial backdrop glow,
+     and a floating liquid glass control center. Clean, elegant typography with no visual clutter. -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".MainActivity">
+
+    <!-- ==================== BACKGROUND AMBIENT GLOW ==================== -->
+    <!-- Positioned behind the card, soft radial gradient that fades in when ON -->
+    <View
+        android:id="@+id/viewAmbientGlow"
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:background="@drawable/bg_ambient_glow"
+        android:visibility="invisible"
+        android:alpha="0"
+        app:layout_constraintBottom_toTopOf="@id/cardTorch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTorch" />
+
+    <!-- ==================== HEADER ==================== -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:text="1 torch"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="-0.03"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ==================== LIQUID GLASS CARD ==================== -->
+    <!-- Standard FrameLayout with custom background to allow correct rendering of custom drawables -->
+    <FrameLayout
+        android:id="@+id/cardTorch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_glass_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="32dp">
+
+            <!-- Circular Button Area -->
+            <FrameLayout
+                android:id="@+id/framePowerIcon"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- Inner warm white glow halo (fades and pulses when active) -->
+                <View
+                    android:id="@+id/viewGlowRing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_glow_ring"
+                    android:alpha="0"
+                    android:visibility="invisible" />
+
+                <!-- Circular central power button -->
+                <ImageButton
+                    android:id="@+id/btnPowerCircle"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_torch_button_off"
+                    android:src="@drawable/ic_bolt"
+                    android:contentDescription="@string/content_desc_power_icon"
+                    android:scaleType="fitCenter"
+                    android:padding="28dp"
+                    app:tint="#66FFFFFF" />
+            </FrameLayout>
+
+            <!-- Status Indicator Label -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/label_status_off"
+                android:textColor="#FF453A"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="-0.01" />
+
+            <!-- Internal Section Divider -->
+            <View
+                android:id="@+id/dividerLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="28dp"
+                android:background="#14FFFFFF" />
+
+            <!-- Apple-style Switch Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_flashlight"
+                    android:textColor="#E6FFFFFF"
+                    android:textSize="17sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="-0.01" />
+
+                <!-- MaterialSwitch styled to behave like iOS switch -->
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchFlashlight"
+                    android:layout_width="51dp"
+                    android:layout_height="31dp"
+                    app:thumbTint="@android:color/white"
+                    app:trackDecoration="@null"
+                    app:trackTint="#1AFFFFFF" />
+            </LinearLayout>
+
+            <!-- Custom Brightness Slider Section -->
+            <LinearLayout
+                android:id="@+id/sliderSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvBrightnessLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:text="@string/label_brightness"
+                    android:textColor="#8CFFFFFF"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08" />
+
+                <!-- Glassmorphism Custom Seekbar (with side padding to prevent thumb clipping) -->
+                <SeekBar
+                    android:id="@+id/seekBarBrightness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:min="1"
+                    android:max="5"
+                    android:progress="1"
+                    android:splitTrack="false"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:thumbOffset="0dp"
+                    android:progressDrawable="@drawable/bg_seekbar"
+                    android:thumb="@drawable/bg_slider_thumb"
+                    android:enabled="false" />
+
+                <!-- Indicator ticks representing snap points -->
+                <LinearLayout
+                    android:id="@+id/layoutTicks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:layout_marginTop="-6dp"
+                    android:layout_marginBottom="16dp">
+
+                    <View android:layout_width="2dp" android:layout_height="4dp" android:background="#26FFFFFF" />
+                    <Space android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                    <View android:layout_width="2dp" android:layout_height="4dp" android:background="#26FFFFFF" />
+                    <Space android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                    <View android:layout_width="2dp" android:layout_height="4dp" android:background="#26FFFFFF" />
+                    <Space android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                    <View android:layout_width="2dp" android:layout_height="4dp" android:background="#26FFFFFF" />
+                    <Space android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                    <View android:layout_width="2dp" android:layout_height="4dp" android:background="#26FFFFFF" />
+                </LinearLayout>
+
+                <!-- Status details level reading -->
+                <TextView
+                    android:id="@+id/tvLevelReadout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#66FFFFFF"
+                    android:textSize="13sp"
+                    android:letterSpacing="0.02"
+                    tools:text="Level 1 / 5" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Info/Error Message Bottom Banner -->
+    <TextView
+        android:id="@+id/tvInfoBanner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_info_banner"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="14dp"
+        android:textColor="#B3FFFFFF"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTorch"
+        tools:text="Multi-level brightness not supported"
+        tools:visibility="visible" />
+
+    <!-- Sleek Custom Signature Footer (by 30.n1ne) -->
+    <TextView
+        android:id="@+id/tvAppleSig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="by 30.n1ne"
+        android:textColor="#4DFFFFFF"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
